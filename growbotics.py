@@ -12,6 +12,7 @@ from kivy.config import Config
 from kivy.uix.widget import Widget
 from kivy.uix.label import Label
 from kivy.core.window import Window
+from kivy.uix.button import Button
 from kivy.uix.image import Image
 
 
@@ -106,9 +107,9 @@ class Logic(BoxLayout):
         pass
 
 
-class UarmGUI(App):
+class Growbotics(App):
     def __init__(self, **kwargs):
-        super(UarmGUI, self).__init__(**kwargs)
+        super(Growbotics, self).__init__(**kwargs)
         self.settings = []
 
     def build(self):
@@ -121,7 +122,9 @@ class UarmGUI(App):
         print "START"
 
         self.settings = self.root.load_settings()
-        self.root.draw_grid()
+        btn1 = Button(size_hint=(1, None))
+        btn1.text = 'test2'
+        self.grid1.addwidget(btn1)
 
     def on_stop(self):
         print "STOP"

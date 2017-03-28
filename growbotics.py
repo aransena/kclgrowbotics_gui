@@ -35,6 +35,7 @@ class Logic(BoxLayout):
     def __init__(self, **kwargs):
         super(Logic, self).__init__(**kwargs)
 
+
         # Initial running parameters
         # self.info_display = InfoDisplay(size_hint=(.1, .9))
         # self.add_widget(self.info_display)
@@ -75,9 +76,37 @@ class Logic(BoxLayout):
             file_path = self.check_filepath(file_path)
         return file_path
 
+    # def btn_pressed(self, *args):
+    #     btn = args[0]
+    #     print "Pressed ", btn.id
+    #     btn.source = 'images/plant1.png'
+
+
     def start(self, fn):
-        self.ids.slot1.background_color = [255,255,0,0.999]
-        self.ids.im1.source = 'images/plant2.png'
+
+        # self.ids.slot1.background_color = [255,255,0,0.999]
+        # self.ids.im1.source = 'images/plant2.png'
+        # # im=Image(source='images/plant3.jpg')
+        # for i in range(0,16):
+        #     ids = 'btn' + str(i)
+        #     btn = Button(id = ids,
+        #                  source = im,
+        #                  size = self.parent.size)#, center_x = self.parent.center_x,
+        #     btn.background_colour = [255,255,0,0.999]
+        #     btn.bind(on_release=self.btn_pressed)
+        #     self.ids.grid.add_widget(btn)
+        #     print btn.id, len(self.ids.grid.children)
+        #
+        #
+        # self.ids.grid.children[0].source = im
+
+        for i in range(1,17):
+            self.ids.get('slot'+str(i)).background_color = [255,255,0,0.999]
+            self.ids.get('im'+str(i)).source = 'images/plant3.png'
+
+
+                         #center_y = self.parent.center_y)
+            #btn.text = 'test' + str(i)
 
     def stop(self):
         self.ids.slot1.background_color = [0,255,0,0.95]
@@ -122,9 +151,7 @@ class Growbotics(App):
         print "START"
 
         self.settings = self.root.load_settings()
-        btn1 = Button(size_hint=(1, None))
-        btn1.text = 'test2'
-        self.grid1.addwidget(btn1)
+
 
     def on_stop(self):
         print "STOP"
@@ -132,4 +159,4 @@ class Growbotics(App):
 
 if __name__ == "__main__":
     position = []
-    UarmGUI().run()
+    Growbotics().run()

@@ -1,0 +1,272 @@
+Logic:
+    BoxLayout:
+        orientation: "vertical"
+        BoxLayout:
+            size_hint: [1, .1]
+            TextInput:
+                id: filename2
+                font_size: 30
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+                text: "Test"
+                read_only: False
+
+        GridLayout:
+            cols: 4
+
+            Button:
+                id: slot1
+                bold: True
+                on_press: root.process_control(start.text,filename.text)
+                background_color: (255,255,255,1)
+                Image:
+                    id:im1
+                    source: 'images/plant1.png'
+                    size: self.parent.size
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    allow_stretch: False
+            Button:
+                id: slot2
+                text: "slot2"
+                bold: True
+                on_press: root.process_control(start.text,filename.text)
+                background_color: (255,255,255,1)
+                Image:
+                    source: 'images/plant2.png'
+                    size: self.parent.size
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    allow_stretch: False
+            Button:
+                id: slot3
+                text: "slot3"
+                bold: True
+                on_press: root.process_control(start.text,filename.text)
+                background_color: (255,255,255,1)
+                Image:
+                    source: 'images/plant3.png'
+                    size: self.parent.size
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    allow_stretch: False
+
+            Button:
+                id: slot4
+                text: "slot4"
+                bold: True
+                on_press: root.process_control(start.text,filename.text)
+                background_color: (255,255,255,1)
+                Image:
+                    source: 'images/kivy.png'
+                    #y: self.parent.y#self.parent.y + self.parent.height - self.parent.width
+                    #x: self.parent.x
+                    size: self.parent.size
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    allow_stretch: False
+            Button:
+                id: slot5
+                text: "slot5"
+                bold: True
+                on_press: root.process_control(start.text,filename.text)
+                background_color: (255,255,255,1)
+                Image:
+                    source: 'images/kivy.png'
+                    #y: self.parent.y#self.parent.y + self.parent.height - self.parent.width
+                    #x: self.parent.x
+                    size: self.parent.size
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    allow_stretch: False
+            Button:
+                id: slot6
+                text: "slot6"
+                bold: True
+                on_press: root.process_control(start.text,filename.text)
+                background_color: (255,255,255,1)
+                Image:
+                    source: 'images/kivy.png'
+                    #y: self.parent.y#self.parent.y + self.parent.height - self.parent.width
+                    #x: self.parent.x
+                    size: self.parent.size
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    allow_stretch: False
+            Button:
+                id: slot7
+                text: "slot7"
+                bold: True
+                on_press: root.process_control(start.text,filename.text)
+                background_color: (255,255,255,1)
+                Image:
+                    source: 'images/kivy.png'
+                    #y: self.parent.y#self.parent.y + self.parent.height - self.parent.width
+                    #x: self.parent.x
+                    size: self.parent.size
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    allow_stretch: False
+            Button:
+                id: slot8
+                text: "slot8"
+                bold: True
+                on_press: root.process_control(start.text,filename.text)
+                background_color: (255,255,255,1)
+                Image:
+                    source: 'images/kivy.png'
+                    #y: self.parent.y#self.parent.y + self.parent.height - self.parent.width
+                    #x: self.parent.x
+                    size: self.parent.size
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    allow_stretch: False
+
+            Button:
+                id: slot9
+                text: "slot9"
+                bold: True
+                on_press: root.process_control(start.text,filename.text)
+                background_color: (255,255,255,1)
+                Image:
+                    source: 'images/kivy.png'
+                    #y: self.parent.y#self.parent.y + self.parent.height - self.parent.width
+                    #x: self.parent.x
+                    size: self.parent.size
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    allow_stretch: False
+            Button:
+                id: slot10
+                text: "slot10"
+                bold: True
+                on_press: root.process_control(start.text,filename.text)
+                background_color: (255,255,255,1)
+                Image:
+                    source: 'images/kivy.png'
+                    #y: self.parent.y#self.parent.y + self.parent.height - self.parent.width
+                    #x: self.parent.x
+                    size: self.parent.size
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    allow_stretch: False
+            Button:
+                id: slot11
+                text: "slot11"
+                bold: True
+                on_press: root.process_control(start.text,filename.text)
+                background_color: (255,255,255,1)
+                Image:
+                    source: 'images/kivy.png'
+                    #y: self.parent.y#self.parent.y + self.parent.height - self.parent.width
+                    #x: self.parent.x
+                    size: self.parent.size
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    allow_stretch: False
+            Button:
+                id: slot12
+                text: "slot12"
+                bold: True
+                on_press: root.process_control(start.text,filename.text)
+                background_color: (255,255,255,1)
+                Image:
+                    source: 'images/kivy.png'
+                    #y: self.parent.y#self.parent.y + self.parent.height - self.parent.width
+                    #x: self.parent.x
+                    size: self.parent.size
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    allow_stretch: False
+
+            Button:
+                id: slot13
+                text: "slot13"
+                bold: True
+                on_press: root.process_control(start.text,filename.text)
+                background_color: (255,255,255,1)
+                Image:
+                    source: 'images/kivy.png'
+                    #y: self.parent.y#self.parent.y + self.parent.height - self.parent.width
+                    #x: self.parent.x
+                    size: self.parent.size
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    allow_stretch: False
+            Button:
+                id: slot14
+                text: "slot14"
+                bold: True
+                on_press: root.process_control(start.text,filename.text)
+                background_color: (255,255,255,1)
+                Image:
+                    source: 'images/kivy.png'
+                    #y: self.parent.y#self.parent.y + self.parent.height - self.parent.width
+                    #x: self.parent.x
+                    size: self.parent.size
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    allow_stretch: False
+            Button:
+                id: slot15
+                text: "slot15"
+                bold: True
+                on_press: root.process_control(start.text,filename.text)
+                background_color: (255,255,255,1)
+                Image:
+                    source: 'images/kivy.png'
+                    #y: self.parent.y#self.parent.y + self.parent.height - self.parent.width
+                    #x: self.parent.x
+                    size: self.parent.size
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    allow_stretch: False
+            Button:
+                id: slot16
+                text: "slot16"
+                bold: True
+                on_press: root.process_control(start.text,filename.text)
+                background_color: (255,255,255,1)
+                Image:
+                    source: 'images/kivy.png'
+                    #y: self.parent.y#self.parent.y + self.parent.height - self.parent.width
+                    #x: self.parent.x
+                    size: self.parent.size
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    allow_stretch: False
+
+
+        BoxLayout:
+            size_hint: [1, .1]
+            orientation: "horizontal"
+            Button:
+                id: start
+                text: "START"
+                bold: True
+                on_press: root.process_control(start.text,filename.text)
+            Button:
+                id: stop
+                text: "STOP"
+                bold: True
+                on_press: root.process_control(stop.text,filename.text)
+
+            Button:
+                id: reset
+                text: "RESET"
+                bold: True
+                on_press: root.process_control(reset.text,filename.text)
+
+            Button:
+                id: play
+                text: "PLAY"
+                bold: True
+                on_press: root.process_control(play.text,filename.text)
+
+            TextInput:
+                id: filename
+                text: ""
+                read_only: False
+
+
+

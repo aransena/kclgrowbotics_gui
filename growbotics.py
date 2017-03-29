@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+
+
 from kivy.lang import Builder
 from kivy.app import App
 from kivy.config import Config
@@ -21,9 +24,9 @@ class Growbotics(App):
 
     def on_start(self):
         print "START"
-
         self.settings = self.root.load_settings()
         self.root.setup_view()
+        self.root.connect_to_ROS()
 
 
     def on_stop(self):

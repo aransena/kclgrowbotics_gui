@@ -48,7 +48,7 @@ class Logic(BoxLayout):
 
                 self.update_image(i)
             else:
-                self.update_background(i,255,255,0,1)
+                self.update_background(i,255,255,255,1)
                 self.update_image(i, empty=True)
 
 
@@ -115,9 +115,9 @@ class Logic(BoxLayout):
     def setup(self):
         self.ids.statusTxt.text = "Idle"
         self.growth = self.get_setting('growth', list=True, float_val=False)
-        for i in range(1,17):
-            self.update_background(i-1,255,255,0,1)
-            self.update_image(i-1)
+        for i in range(0,16):
+            self.update_background(i,255,255,0,1)
+            self.update_image(i)
 
     def start(self):
         self.running = True
@@ -147,9 +147,9 @@ class Logic(BoxLayout):
         self.ids.get('slot'+str(ind+1)).background_color = [r,g,b,a]
 
     def process_control(self, text):
-        self.ids['start'].background_color = 1.0, 0.0, 0.0, 1.0
-        self.ids['stop'].background_color = 1.0, 0.0, 0.0, 1.0
-        self.ids['reset'].background_color = 1.0, 0.0, 0.0, 1.0
+        # self.ids['start'].background_color = 1.0, 0.0, 0.0, 1.0
+        # self.ids['stop'].background_color = 1.0, 0.0, 0.0, 1.0
+        # self.ids['reset'].background_color = 1.0, 0.0, 0.0, 1.0
         if "slot" in text:
             ind = int(text[4:])-1
             if self.occupancy[ind] == 1:
@@ -163,12 +163,12 @@ class Logic(BoxLayout):
             print text
 
         if text == "START":
-            self.ids['start'].background_color = 1.0, 1.0, 0.0, 1.0
+            # self.ids['start'].background_color = 1.0, 1.0, 0.0, 1.0
             self.start()
         if text == "STOP":
-            self.ids['stop'].background_color = 1.0, 1.0, 0.0, 1.0
+            # self.ids['stop'].background_color = 1.0, 1.0, 0.0, 1.0
             self.stop()
         if text == "RESET":
-            self.ids['reset'].background_color = 1.0, 1.0, 0.0, 1.0
+            # self.ids['reset'].background_color = 1.0, 1.0, 0.0, 1.0
             self.reset()
         pass

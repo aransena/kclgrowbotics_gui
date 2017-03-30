@@ -7,7 +7,7 @@ from time import sleep,time
 from arduino_ws.msg import Adc_Mega
 
 from kivy.uix.boxlayout import BoxLayout
-
+from random import randint
 
 class Logic(BoxLayout):
     def __init__(self, **kwargs):
@@ -17,6 +17,7 @@ class Logic(BoxLayout):
         self.score = 0
         self.prev_trigger = [0]*16
         self.set_time = [0]*16
+        self.age = [0]*16
         self.LED_pub = None
         self.growth = [1]*16
         self.occupancy = [1]*16
@@ -51,7 +52,20 @@ class Logic(BoxLayout):
                 self.update_background(i,255,255,255,1)
                 self.update_image(i, empty=True)
 
-
+        if self.running:
+            for a,age in enumerate(self.age):
+                if time()>age and age is not 0:
+                    print "here"
+                    self.growth[a]+=1
+                    print "htt"
+                    g = self.growth[a]
+                    print "www"
+                    prev_age = self.age[a]
+                    print "there"
+                    new_age = self.update_age(self,a,g)
+                    self.age[a] = new_age
+                    print "333"
+                    print prev_age, self.age[a]
 
         if len(self.prev_occupancy)>0 and self.running:
             index = 0
@@ -115,6 +129,7 @@ class Logic(BoxLayout):
     def setup(self):
         self.ids.statusTxt.text = "Idle"
         self.growth = self.get_setting('growth', list=True, float_val=False)
+
         for i in range(0,16):
             self.update_background(i,255,255,0,1)
             self.update_image(i)
@@ -122,6 +137,22 @@ class Logic(BoxLayout):
     def start(self):
         self.running = True
         self.ids.statusTxt.text = "Running"
+        # setup plant ages
+        for i,g in enumerate(self.growth):
+            self.update_age(i,g)
+
+    def update_age(self,index,growth):
+        print "UPDATE", index, growth
+        if growth == 1:
+            timer = self.get_setting('young',list=True,float_val=False)
+            self.age[index]=int(time())+randint(timer[0],timer[1]) # will mature sometime in the next 30-60 seconds
+        elif growth == 2:
+            timer = self.get_setting('mature',list=True,float_val=False)
+            self.age[index]=int(time())+randint(timer[0],timer[1]) # will die sometime in the next 120-150 seconds
+        elif growth==3:
+            timer = self.get_setting('dead',list=True,float_val=False)
+            self.age[index]=int(time())+randint(timer[0],timer[1]) # dead
+
 
     def stop(self):
         self.running = False
@@ -147,9 +178,6 @@ class Logic(BoxLayout):
         self.ids.get('slot'+str(ind+1)).background_color = [r,g,b,a]
 
     def process_control(self, text):
-        # self.ids['start'].background_color = 1.0, 0.0, 0.0, 1.0
-        # self.ids['stop'].background_color = 1.0, 0.0, 0.0, 1.0
-        # self.ids['reset'].background_color = 1.0, 0.0, 0.0, 1.0
         if "slot" in text:
             ind = int(text[4:])-1
             if self.occupancy[ind] == 1:
@@ -163,12 +191,9 @@ class Logic(BoxLayout):
             print text
 
         if text == "START":
-            # self.ids['start'].background_color = 1.0, 1.0, 0.0, 1.0
             self.start()
         if text == "STOP":
-            # self.ids['stop'].background_color = 1.0, 1.0, 0.0, 1.0
             self.stop()
         if text == "RESET":
-            # self.ids['reset'].background_color = 1.0, 1.0, 0.0, 1.0
             self.reset()
         pass

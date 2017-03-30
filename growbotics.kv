@@ -7,8 +7,9 @@ Logic:
                 id: statusTxt
                 font_size: 30
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-
-                text: "Test"
+                padding_x:[self.center[0] - self._get_text_width(max(self._lines, key=len), self.tab_width, self._label_cached) / 2.0,0] if self.text else [self.center[0], 0]
+                padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+                text: ""
                 read_only: False
 
         GridLayout:
@@ -19,7 +20,7 @@ Logic:
                 id: slot1
                 label: "slot1"
                 bold: True
-                on_press: root.process_control(slot1.label,filename.text)
+                on_press: root.process_control(slot1.label)#,filename.text)
                 background_color: (255,255,255,1)
                 Image:
                     id:im1
@@ -32,7 +33,7 @@ Logic:
                 id: slot2
                 label: "slot2"
                 bold: True
-                on_press: root.process_control(slot2.label,filename.text)
+                on_press: root.process_control(slot2.label)#,filename.text)
                 background_color: (255,255,255,1)
                 Image:
                     id:im2
@@ -45,7 +46,7 @@ Logic:
                 id: slot3
                 label: "slot3"
                 bold: True
-                on_press: root.process_control(slot3.label,filename.text)
+                on_press: root.process_control(slot3.label)#,filename.text)
                 background_color: (255,255,255,1)
                 Image:
                     id:im3
@@ -59,7 +60,7 @@ Logic:
                 id: slot4
                 label: "slot4"
                 bold: True
-                on_press: root.process_control(slot4.label,filename.text)
+                on_press: root.process_control(slot4.label)#,filename.text)
                 background_color: (255,255,255,1)
                 Image:
                     id:im4
@@ -74,7 +75,7 @@ Logic:
                 id: slot5
                 label: "slot5"
                 bold: True
-                on_press: root.process_control(slot5.label,filename.text)
+                on_press: root.process_control(slot5.label)#,filename.text)
                 background_color: (255,255,255,1)
                 Image:
                     id:im5
@@ -87,7 +88,7 @@ Logic:
                 id: slot6
                 label: "slot6"
                 bold: True
-                on_press: root.process_control(slot6.label,filename.text)
+                on_press: root.process_control(slot6.label)#,filename.text)
                 background_color: (255,255,255,1)
                 Image:
                     id:im6
@@ -100,7 +101,7 @@ Logic:
                 id: slot7
                 label: "slot7"
                 bold: True
-                on_press: root.process_control(slot7.label,filename.text)
+                on_press: root.process_control(slot7.label)#,filename.text)
                 background_color: (255,255,255,1)
                 Image:
                     id:im7
@@ -113,7 +114,7 @@ Logic:
                 id: slot8
                 label: "slot8"
                 bold: True
-                on_press: root.process_control(slot8.label,filename.text)
+                on_press: root.process_control(slot8.label)#,filename.text)
                 background_color: (255,255,255,1)
                 Image:
                     id:im8
@@ -127,7 +128,7 @@ Logic:
                 id: slot9
                 label: "slot9"
                 bold: True
-                on_press: root.process_control(slot9.label,filename.text)
+                on_press: root.process_control(slot9.label)#,filename.text)
                 background_color: (255,255,255,1)
                 Image:
                     id:im9
@@ -140,7 +141,7 @@ Logic:
                 id: slot10
                 label: "slot10"
                 bold: True
-                on_press: root.process_control(slot10.label,filename.text)
+                on_press: root.process_control(slot10.label)#,filename.text)
                 background_color: (255,255,255,1)
                 Image:
                     id:im10
@@ -153,7 +154,7 @@ Logic:
                 id: slot11
                 label: "slot11"
                 bold: True
-                on_press: root.process_control(slot11.label,filename.text)
+                on_press: root.process_control(slot11.label)#,filename.text)
                 background_color: (255,255,255,1)
                 Image:
                     id:im11
@@ -166,7 +167,7 @@ Logic:
                 id: slot12
                 label: "slot12"
                 bold: True
-                on_press: root.process_control(slot12.label,filename.text)
+                on_press: root.process_control(slot12.label)#,filename.text)
                 background_color: (255,255,255,1)
                 Image:
                     id:im12
@@ -180,7 +181,7 @@ Logic:
                 id: slot13
                 label: "slot13"
                 bold: True
-                on_press: root.process_control(slot13.label,filename.text)
+                on_press: root.process_control(slot13.label)#,filename.text)
                 background_color: (255,255,255,1)
                 Image:
                     id:im13
@@ -193,7 +194,7 @@ Logic:
                 id: slot14
                 label: "slot14"
                 bold: True
-                on_press: root.process_control(slot14.label,filename.text)
+                on_press: root.process_control(slot14.label)#,filename.text)
                 background_color: (255,255,255,1)
                 Image:
                     id:im14
@@ -206,7 +207,7 @@ Logic:
                 id: slot15
                 label: "slot15"
                 bold: True
-                on_press: root.process_control(slot15.label,filename.text)
+                on_press: root.process_control(slot15.label)#,filename.text)
                 background_color: (255,255,255,1)
                 Image:
                     id:im15
@@ -219,7 +220,7 @@ Logic:
                 id: slot16
                 label: "slot16"
                 bold: True
-                on_press: root.process_control(slot16.label,filename.text)
+                on_press: root.process_control(slot16.label)#,filename.text)
                 background_color: (255,255,255,1)
                 Image:
                     id:im16
@@ -232,28 +233,32 @@ Logic:
         BoxLayout:
             size_hint: [1, .1]
             orientation: "horizontal"
+
             Button:
                 id: start
                 text: "START"
                 bold: True
-                on_press: root.process_control(start.text,filename.text)
+                on_press: root.process_control(start.text)#,filename.text)
+                background_color: [0,0.4,0.6,1]
+
             Button:
                 id: stop
                 text: "STOP"
                 bold: True
-                on_press: root.process_control(stop.text,filename.text)
+                on_press: root.process_control(stop.text)#,filename.text)
+                background_color: [0,0.4,0.6,1]
 
             Button:
                 id: reset
                 text: "RESET"
                 bold: True
-                on_press: root.process_control(reset.text,filename.text)
+                on_press: root.process_control(reset.text)#,filename.text)
+                background_color: [0,0.4,0.6,1]
 
-
-            TextInput:
-                id: filename
-                text: ""
-                read_only: False
+            # TextInput:
+            #     id: filename
+            #     text: ""
+            #     read_only: False
 
 
 

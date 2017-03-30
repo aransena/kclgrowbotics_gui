@@ -19,13 +19,12 @@ class Growbotics(App):
     def build(self):
         self.root = Widget()
         self.root = Builder.load_file("growbotics.kv")
-
         return self.root
 
     def on_start(self):
         print "START"
         self.settings = self.root.load_settings()
-        self.root.setup_view()
+        self.root.setup()
         self.root.connect_to_ROS()
 
 

@@ -12,6 +12,7 @@ from random import randint
 class Logic(BoxLayout):
     def __init__(self, **kwargs):
         super(Logic, self).__init__(**kwargs)
+        self.growing = False
         self.settings = []
         self.running = False
         self.score = 0
@@ -33,24 +34,25 @@ class Logic(BoxLayout):
 
     def shelf_callback(self, msg):
         self.occupancy = msg.data
+        rev = 15
         msg = Adc_Mega()
         Ha = [-1]*16
         for i in range(0,len(self.occupancy)):
-            state = self.occupancy[i]
+            state = self.occupancy[rev-i]
             if state == 1:
-                ind = self.growth[i]
+                ind = self.growth[rev-i]
                 Ha[i] = self.colors[ind]
                 if ind==1:
-                    self.update_background(i,0,0,255,1)
+                    self.update_background(rev-i,0,0,255,1)
                 elif ind==2:
-                    self.update_background(i,0,255,0,1)
+                    self.update_background(rev-i,0,255,0,1)
                 elif ind==3:
-                    self.update_background(i,255,0,0,1)
+                    self.update_background(rev-i,255,0,0,1)
 
-                self.update_image(i)
+                self.update_image(rev-i)
             else:
-                self.update_background(i,255,255,255,1)
-                self.update_image(i, empty=True)
+                self.update_background(rev-i,255,255,255,1)
+                self.update_image(rev-i, empty=True)
 
         if self.running:
             for a,age in enumerate(self.age):
@@ -142,16 +144,20 @@ class Logic(BoxLayout):
             self.update_age(i,g)
 
     def update_age(self,index,growth):
-        print "UPDATE", index, growth
-        if growth == 1:
-            timer = self.get_setting('young',list=True,float_val=False)
-            self.age[index]=int(time())+randint(timer[0],timer[1]) # will mature sometime in the next 30-60 seconds
-        elif growth == 2:
-            timer = self.get_setting('mature',list=True,float_val=False)
-            self.age[index]=int(time())+randint(timer[0],timer[1]) # will die sometime in the next 120-150 seconds
-        elif growth==3:
-            timer = self.get_setting('dead',list=True,float_val=False)
-            self.age[index]=int(time())+randint(timer[0],timer[1]) # dead
+        if self.growing:
+            print "UPDATE", index, growth
+
+            if growth == 1:
+                timer = self.get_setting('young',list=True,float_val=False)
+                self.age[index]=int(time())+randint(timer[0],timer[1]) # will mature sometime in the next 30-60 seconds
+            elif growth == 2:
+                timer = self.get_setting('mature',list=True,float_val=False)
+                self.age[index]=int(time())+randint(timer[0],timer[1]) # will die sometime in the next 120-150 seconds
+            elif growth==3:
+                timer = self.get_setting('dead',list=True,float_val=False)
+                self.age[index]=int(time())+randint(timer[0],timer[1]) # dead
+        else:
+            pass
 
 
     def stop(self):
